@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campus Rental & Sell Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="light">
+  <div id="app">
+    <!-- Header -->
+    <header class="main-header">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <span class="logo-symbol">▢</span>
+        </div>
+        <div class="logo-text">
+          <h1>Campus DApp Hub</h1>
+          <p>Smart rental & sell network</p>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for books, rooms, gadgets..."
+          />
+        </div>
+        <div class="filters">
+          <select id="filter-category">
+            <option value="all">All categories</option>
+            <option value="books">Books</option>
+            <option value="electronics">Electronics</option>
+            <option value="room">Rooms / PG</option>
+            <option value="others">Others</option>
+          </select>
+          <select id="filter-type">
+            <option value="all">Rent & Sell</option>
+            <option value="rent">Rent only</option>
+            <option value="sell">Sell only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="contact-mini">
+          <span>📧 helpdapp@gmail.com</span>
+          <span>📞 +91 8392834933</span>
+        </div>
+        <button id="connect-wallet" class="primary-btn" style="padding:0.4rem 1rem;">
+          Connect Wallet
+        </button>
+        <button id="theme-toggle" class="icon-button" title="Toggle theme">
+          🌙
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Find or list anything on campus.</h2>
+        <p>
+          From books and laptops to rooms and lab equipment — make college life
+          cheaper, smarter, and more connected.
+        </p>
+        <div class="hero-actions">
+          <button id="scroll-to-form" class="primary-btn">+ List an Item</button>
+          <button id="scroll-to-listings" class="secondary-btn">Browse Listings</button>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="stat-card">
+          <h3>Secure Deals</h3>
+          <p>No middleman, direct owner-to-student connections.</p>
+        </div>
+        <div class="stat-card">
+          <h3>Smart Filters</h3>
+          <p>Find exactly what you need in seconds.</p>
+        </div>
+        <div class="stat-card">
+          <h3>Always On</h3>
+          <p>24×7 listings, chat, and support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Listing Form -->
+    <section class="form-section" id="form-section">
+      <h2>List your item</h2>
+      <p class="section-subtitle">
+        Add details so others can easily rent or buy it.
+      </p>
+      <form id="listing-form" class="card">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="title">Item title*</label>
+            <input type="text" id="title" required placeholder="e.g. Canon DSLR 1500D" />
+          </div>
+
+          <div class="form-field">
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="books">Books</option>
+              <option value="electronics">Electronics</option>
+              <option value="room">Rooms / PG</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+
+          <!-- Rent / Sell in different boxes -->
+          <div class="form-field">
+            <label>Listing type*</label>
+            <div class="type-toggle" id="type-toggle">
+              <button type="button" class="type-option active" data-value="rent">
+                Rent
+              </button>
+              <button type="button" class="type-option" data-value="sell">
+                Sell
+              </button>
+            </div>
+            <input type="hidden" id="type" value="rent" />
+          </div>
+
+          <div class="form-field">
+            <label for="price">Price (in ETH)*</label>
+            <input
+              type="number"
+              id="price"
+              required
+              min="0"
+              step="0.0001"
+              placeholder="e.g. 0.01"
+            />
+          </div>
+
+          <!-- Rent-only fields -->
+          <div class="form-field" id="duration-field">
+            <label for="durationUnit">Rent duration unit</label>
+            <select id="durationUnit">
+              <option value="day">Per day</option>
+              <option value="week">Per week</option>
+              <option value="month">Per month</option>
+            </select>
+          </div>
+
+          <div class="form-field" id="security-deposit-field">
+            <label for="securityDeposit">Security deposit (in ETH, optional)</label>
+            <input
+              type="number"
+              id="securityDeposit"
+              min="0"
+              step="0.0001"
+              placeholder="e.g. 0.02"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="location">Pickup / Location</label>
+            <input
+              type="text"
+              id="location"
+              placeholder="e.g. Hostel C, Room 203"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contactEmail">Contact email (UI only)</label>
+            <input
+              type="email"
+              id="contactEmail"
+              placeholder="yourname@college.com"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contactPhone">Contact phone (UI only)</label>
+            <input
+              type="tel"
+              id="contactPhone"
+              placeholder="+91 9XXXXXXXXX"
+            />
+          </div>
+        </div>
+
+        <div class="form-field full-width">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            rows="3"
+            placeholder="Condition, usage, rules, availability timings..."
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="primary-btn">Publish listing</button>
+          <span class="form-hint">*Required fields</span>
+        </div>
+
+        <p id="form-status" class="form-status"></p>
+      </form>
+    </section>
+
+    <!-- Listings Section -->
+    <section class="listings-section" id="listings-section">
+      <div class="section-header">
+        <div>
+          <h2>Live listings</h2>
+          <p class="section-subtitle">
+            Browse items added by students. Use filters above to narrow down.
+          </p>
+        </div>
+        <button id="refresh-listings" class="ghost-btn">⟳ Refresh</button>
+      </div>
+
+      <div id="listings-container" class="listings-grid">
+        <!-- Cards filled by JS -->
+      </div>
+
+      <p id="empty-state" class="empty-state">
+        No listings yet. Be the first one to list something!
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="faq-inner">
+        <h2>FAQs</h2>
+        <p class="section-subtitle">
+          Have questions? Check if they’re answered here.
+        </p>
+
+        <div class="faq-list">
+          <!-- 10 FAQ cards (unchanged text) -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Is this a real blockchain DApp?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                This DApp uses wallets & smart contracts on a test network. Listings and payments live on-chain.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I connect my wallet?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Click the <strong>Connect Wallet</strong> button in the header. MetaMask opens and you approve the connection.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I list an item for rent or sell?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Connect your wallet, fill the <strong>List your item</strong> form, choose Rent or Sell, set a price in ETH and submit.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I pay with cryptocurrency?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                On a listing card, click the crypto button (<em>Rent (crypto)</em> or <em>Buy (crypto)</em>). MetaMask sends the exact amount to the owner.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I mark my item as unavailable?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                If you are the owner, your card shows a <strong>Mark unavailable/available</strong> button that updates the status on-chain.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which network & token does this use?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                It uses whichever network your MetaMask is on (e.g. Sepolia). Prices are in that chain's native token (like ETH).
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What kind of items can I list?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Legal items only: books, electronics, lab tools, rooms/PG, etc. No dangerous or prohibited items.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I stay safe when meeting?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Meet in public places, inform a friend, inspect the item properly and avoid sharing sensitive personal info.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Does the theme change layout too?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No, theme only swaps colors between sand light mode and dark mode. Layout and logic stay the same.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How can I get support if I’m stuck?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Email <strong>helpdapp@gmail.com</strong> or call
+                <strong>+91 8392834933</strong> for support related to the platform.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-left">
+        <h3>Campus DApp Hub</h3>
+        <p>Community-powered marketplace for college students.</p>
+      </div>
+      <div class="footer-center">
+        <p>Support & Queries:</p>
+        <p>Email: <a href="mailto:helpdapp@gmail.com">helpdapp@gmail.com</a></p>
+        <p>Phone: <a href="tel:+918392834933">+91 8392834933</a></p>
+      </div>
+      <div class="footer-right">
+        <p>Theme: <span id="footer-theme-label">Light</span></p>
+        <p>Made with 💻 + ☕</p>
+      </div>
+    </footer>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot" id="chatbot">
+      <div class="chatbot-header">
+        <div>
+          <h4>Campus Assistant</h4>
+          <p>Ask anything about using the app</p>
+        </div>
+        <button id="chat-close" class="icon-button">×</button>
+      </div>
+      <div class="chatbot-body">
+        <div id="chat-messages" class="chat-messages"></div>
+        <form id="chat-form" class="chat-form">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Type your question..."
+            autocomplete="off"
+          />
+          <button type="submit" class="primary-btn chat-send-btn">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <button id="chat-toggle" class="chat-toggle-btn">
+      💬 Chat
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <script src="contractConfig.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

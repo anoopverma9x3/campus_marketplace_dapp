@@ -1,0 +1,133 @@
+// public/contractConfig.js
+// DO NOT use "export" or "type=module" in index.html script tag.
+// These globals will be read by app.js in the browser.
+
+const CONTRACT_ADDRESS = "0x2965d5d72E257f4bee7F7566043A92bAee5d2A8c";
+
+const CONTRACT_ABI = [
+  {
+    "inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],
+    "name":"buyOrRent",
+    "outputs":[],
+    "stateMutability":"payable",
+    "type":"function"
+  },
+  {
+    "inputs":[
+      {"internalType":"string","name":"_title","type":"string"},
+      {"internalType":"string","name":"_description","type":"string"},
+      {"internalType":"string","name":"_category","type":"string"},
+      {"internalType":"string","name":"_location","type":"string"},
+      {
+        "internalType":"enum CampusMarketplace.ListingType",
+        "name":"_listingType",
+        "type":"uint8"
+      },
+      {"internalType":"uint256","name":"_priceWei","type":"uint256"}
+    ],
+    "name":"createListing",
+    "outputs":[],
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "anonymous":false,
+    "inputs":[
+      {"indexed":true,"internalType":"uint256","name":"id","type":"uint256"},
+      {"indexed":false,"internalType":"bool","name":"isAvailable","type":"bool"}
+    ],
+    "name":"ListingAvailabilityChanged",
+    "type":"event"
+  },
+  {
+    "anonymous":false,
+    "inputs":[
+      {"indexed":true,"internalType":"uint256","name":"id","type":"uint256"},
+      {"indexed":true,"internalType":"address","name":"owner","type":"address"},
+      {
+        "indexed":false,
+        "internalType":"enum CampusMarketplace.ListingType",
+        "name":"listingType",
+        "type":"uint8"
+      },
+      {"indexed":false,"internalType":"uint256","name":"priceWei","type":"uint256"}
+    ],
+    "name":"ListingCreated",
+    "type":"event"
+  },
+  {
+    "anonymous":false,
+    "inputs":[
+      {"indexed":true,"internalType":"uint256","name":"id","type":"uint256"},
+      {"indexed":true,"internalType":"address","name":"buyer","type":"address"},
+      {"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}
+    ],
+    "name":"ListingPurchased",
+    "type":"event"
+  },
+  {
+    "inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],
+    "name":"toggleAvailability",
+    "outputs":[],
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],
+    "name":"getListing",
+    "outputs":[
+      {
+        "components":[
+          {"internalType":"uint256","name":"id","type":"uint256"},
+          {"internalType":"address","name":"owner","type":"address"},
+          {"internalType":"string","name":"title","type":"string"},
+          {"internalType":"string","name":"description","type":"string"},
+          {"internalType":"string","name":"category","type":"string"},
+          {"internalType":"string","name":"location","type":"string"},
+          {
+            "internalType":"enum CampusMarketplace.ListingType",
+            "name":"listingType",
+            "type":"uint8"
+          },
+          {"internalType":"uint256","name":"priceWei","type":"uint256"},
+          {"internalType":"bool","name":"isAvailable","type":"bool"},
+          {"internalType":"uint256","name":"createdAt","type":"uint256"}
+        ],
+        "internalType":"struct CampusMarketplace.Listing",
+        "name":"",
+        "type":"tuple"
+      }
+    ],
+    "stateMutability":"view",
+    "type":"function"
+  },
+  {
+    "inputs":[],
+    "name":"listingCount",
+    "outputs":[{"internalType":"uint256","name":"","type":"uint256"}],
+    "stateMutability":"view",
+    "type":"function"
+  },
+  {
+    "inputs":[{"internalType":"uint256","name":"","type":"uint256"}],
+    "name":"listings",
+    "outputs":[
+      {"internalType":"uint256","name":"id","type":"uint256"},
+      {"internalType":"address","name":"owner","type":"address"},
+      {"internalType":"string","name":"title","type":"string"},
+      {"internalType":"string","name":"description","type":"string"},
+      {"internalType":"string","name":"category","type":"string"},
+      {"internalType":"string","name":"location","type":"string"},
+      {
+        "internalType":"enum CampusMarketplace.ListingType",
+        "name":"listingType",
+        "type":"uint8"
+      },
+      {"internalType":"uint256","name":"priceWei","type":"uint256"},
+      {"internalType":"bool","name":"isAvailable","type":"bool"},
+      {"internalType":"uint256","name":"createdAt","type":"uint256"}
+    ],
+    "stateMutability":"view",
+    "type":"function"
+  }
+];
