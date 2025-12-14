@@ -41,7 +41,7 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro",
     "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, #ffe9b3 0, var(--bg) 40%);
+  background: radial-gradient(circle at top left, #f0b114 0, var(--bg) 40%);
   color: var(--text-main);
   transition: background 0.4s ease, color 0.3s ease;
 }
