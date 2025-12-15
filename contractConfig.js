@@ -2,7 +2,7 @@
 // DO NOT use "export" or "type=module" in index.html script tag.
 // These globals will be read by app.js in the browser.
 
-const CONTRACT_ADDRESS = "0x511e3b6B1555F091DB8C9bE641E22171B47dc7fb";
+const CONTRACT_ADDRESS = "0xCcc4ecC1d8FA7741C2be339054472EC7d02a0806";
 
 const CONTRACT_ABI = [
   {

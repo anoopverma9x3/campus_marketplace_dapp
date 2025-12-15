@@ -13,28 +13,50 @@
   --danger: #ef4444;
   --success: #16a34a;
   --shadow-soft: 0 18px 45px rgba(146, 64, 14, 0.26);
+  --glow-soft: 234, 179, 8;     /* amber */
+  --glow-strong: 217, 119, 6
 }
 
 body.dark {
+  /* Backgrounds */
   --bg: #020617;
-  --bg-elevated: #020617;
+  --bg-elevated: #030712;
   --bg-subtle: #0f172a;
-  --accent: #4f46e5;
-  --accent-soft: rgba(79, 70, 229, 0.32);
+
+  /* Accent */
+  --accent: #6366f1;
   --accent-strong: #818cf8;
+  --accent-soft: rgba(99, 102, 241, 0.25);
+
+  /* Text */
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
   --text-soft: #6b7280;
+
+  /* Borders */
   --border-subtle: #1f2937;
-  --danger: #f97373;
-  --success: #4ade80;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
-}
+
+  /* Status */
+  --success: #22c55e;
+  --danger: #f87171;
+
+  /* Shadows */
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+
+  --glow-soft: 99, 102, 241;    /* indigo */
+  --glow-strong: 129, 140, 248}
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+body.dark {
+  background: radial-gradient(
+    circle at top left,
+    #1e1b4b 0%,
+    var(--bg) 45%
+  );
 }
 
 body {
@@ -619,6 +641,7 @@ body.dark .faq-section {
 
 body.dark .faq-question {
   background: rgba(15, 23, 42, 0.95);
+  color: var(--text-main);
 }
 
 .faq-icon {
@@ -826,3 +849,4 @@ body.dark .chat-form input {
     width: auto;
   }
 }
+

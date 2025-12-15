@@ -50,6 +50,11 @@ function initApp(ethersLib) {
 
   // ==== DOM elements ====
   const themeToggleBtn = document.getElementById("theme-toggle");
+  if (!themeToggleBtn) {
+  console.error("Theme toggle button not found");
+  return;
+}
+
   const footerThemeLabel = document.getElementById("footer-theme-label");
   const connectWalletBtn = document.getElementById("connect-wallet");
 
@@ -163,28 +168,31 @@ function initApp(ethersLib) {
 
   /* ===================== THEME TOGGLE ===================== */
 
-  function applyTheme(theme) {
-    if (theme === "dark") {
-      body.classList.add("dark");
-      body.classList.remove("light");
-      themeToggleBtn.textContent = "☀️";
-      if (footerThemeLabel) footerThemeLabel.textContent = "Dark";
-    } else {
-      body.classList.add("light");
-      body.classList.remove("dark");
-      themeToggleBtn.textContent = "🌙";
-      if (footerThemeLabel) footerThemeLabel.textContent = "Light";
-    }
+/* ===================== THEME TOGGLE ===================== */
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark");
+    themeToggleBtn.textContent = "☀️";
+    if (footerThemeLabel) footerThemeLabel.textContent = "Dark";
+  } else {
+    document.body.classList.remove("dark");
+    themeToggleBtn.textContent = "🌙";
+    if (footerThemeLabel) footerThemeLabel.textContent = "Light";
   }
+}
 
-  const savedTheme = localStorage.getItem("theme") || "light";
-  applyTheme(savedTheme);
+const savedTheme = localStorage.getItem("theme") || "light";
+applyTheme(savedTheme);
 
-  themeToggleBtn.addEventListener("click", () => {
-    const newTheme = body.classList.contains("dark") ? "light" : "dark";
-    applyTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  });
+themeToggleBtn.addEventListener("click", () => {
+  const isDark = document.body.classList.contains("dark");
+  const newTheme = isDark ? "light" : "dark";
+
+  applyTheme(newTheme);
+  localStorage.setItem("theme", newTheme);
+});
+
 
   /* ===================== SMOOTH SCROLL BUTTONS ===================== */
 
@@ -694,3 +702,4 @@ function initApp(ethersLib) {
       .catch((e) => console.error(e));
   }
 }
+
