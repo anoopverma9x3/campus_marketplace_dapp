@@ -1,5 +1,5 @@
 Team Name: MetaMiners
-Project name: Web3 Rental Marketplace
+Project name: Campus Marketplace DApp 
 Project Track: Ethereum India
 Team Members Name:
 Anoop Verma(Leader)
